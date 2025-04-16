@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heart Disease Risk Prediction</title>
+  <style>
+    body {
+        background-color: #1e1e1e;
+        color: #f4f4f4;
+        font-family: 'Segoe UI', sans-serif;
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #fff;
+    }
+
+    form {
+        max-width: 600px;
+        margin: auto;
+        background: #2b2b2b;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(255, 99, 99, 0.2);
+    }
+
+    label {
+        display: block;
+        margin: 20px 0 10px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-bottom: 10px;
+    }
+
+    input[type=submit] {
+        margin-top: 30px;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff4d4d;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+    }
+
+    input[type=submit]:hover {
+        background-color: #e04343;
+    }
+
+    .result-box {
+        margin-top: 30px;
+        background: #3a3a3a;
+        padding: 20px;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1.2rem;
+        text-align: center;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Heart Disease Risk Prediction</h1>
+  <form method="POST">
+    <label>Age:</label>
+    <input type="number" name="age" required>
+
+    <label>Average Heart Rate:</label>
+    <input type="number" name="avg_hr" required>
+
+    <label>Steps per Day:</label>
+    <input type="number" name="steps" required>
+
+    <label>Daily Calories Burnt:</label>
+    <input type="number" name="daily_calories_burnt" required>
+
+    <label>Stress Level (1-10):</label>
+    <input type="number" name="stress_level" min="1" max="10" required>
+
+    <label>Gender:</label>
+    <select name="gender">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+    <label>Smoking Status:</label>
+    <select name="smoking_s">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+
+    <label>Family History of Heart Disease:</label>
+    <select name="family_he">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+
+    <input type="submit" value="Predict">
+  </form>
+
+  {% if prediction %}
+    <div class="result-box">
+      <h2>Prediction: {{ prediction }}</h2>
+    </div>
+  {% endif %}
+</body>
+</html>
